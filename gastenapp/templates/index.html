@@ -65,14 +65,16 @@ t/m
 
 <td>
 
-<a href="./verwijderen/{{b.id}}" 
-   onclick="return confirm('Deze boeking verwijderen?');"
-   class="delete">
+<a href="./bewerken/{{b.id}}">
+✏️
+</a>
+
+<a href="./verwijderen/{{b.id}}"
+onclick="return confirm('Deze boeking verwijderen?');">
 🗑
 </a>
 
 </td>
-
 </tr>
 
 {% endfor %}
