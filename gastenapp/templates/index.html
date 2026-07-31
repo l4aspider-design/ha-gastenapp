@@ -12,7 +12,7 @@
 <h1>🏡 Gastenadministratie</h1>
 
 
-<a href="{{ url_for('nieuw') }}" class="button">
+<a href="./nieuw" class="button">
     + Nieuwe boeking
 </a>
 
@@ -66,11 +66,10 @@ t/m
 
 <td>
 
-<a href="{{ url_for('bewerken', id=b.id) }}">
-    ✏️
+<a href="./bewerken/{{ b.id }}">    ✏️
 </a>
 
-<a href="{{ url_for('verwijderen', id=b.id) }}"
+<a href="./verwijderen/{{ b.id }}"
    onclick="return confirm('Deze boeking verwijderen?');">
     🗑
 </a>
