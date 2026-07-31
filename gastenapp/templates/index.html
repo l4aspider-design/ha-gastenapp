@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gastenapp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
+<body>
+
+<h1>🏡 Gastenadministratie</h1>
+
+<a href="/nieuw">
+    <button>Nieuwe boeking</button>
+</a>
+
+<h2>Boekingen</h2>
+
+<table>
+<tr>
+    <th>Naam</th>
+    <th>Personen</th>
+    <th>Aankomst</th>
+    <th>Vertrek</th>
+    <th>Nachten</th>
+    <th>Bedrag</th>
+    <th>Belasting</th>
+</tr>
+
+{% for b in boekingen %}
+<tr>
+    <td>{{ b.naam }}</td>
+    <td>{{ b.personen }}</td>
+    <td>{{ b.aankomst }}</td>
+    <td>{{ b.vertrek }}</td>
+    <td>{{ b.nachten }}</td>
+    <td>€ {{ b.bedrag }}</td>
+    <td>€ {{ b.toeristenbelasting }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
