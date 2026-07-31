@@ -46,19 +46,23 @@ value="{{ boeking.gast2 if boeking else '' }}">
 </select>
 
 <label>Aankomst</label>
+<input type="date" 
+name="aankomst"
+value="{{ boeking.aankomst if boeking else '' }}"
+required>
 
-<input type="date" name="aankomst" required>
-
-
+    
 <label>Vertrek</label>
-
-<input type="date" name="vertrek" required>
-
+<input type="date" 
+name="vertrek"
+value="{{ boeking.vertrek if boeking else '' }}"
+required>
 
 <label>Bedrag ontvangen</label>
-
-<input name="bedrag" type="number" step="0.01">
-
+<input name="bedrag"
+type="number"
+step="0.01"
+value="{{ boeking.bedrag if boeking else '' }}">
 
 <br><br>
 
