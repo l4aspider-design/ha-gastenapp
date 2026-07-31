@@ -29,7 +29,7 @@ def nieuw():
             request.form["status"]
         )
 
-        return redirect("/")
+        return redirect("./")
 
     return render_template("nieuw.html")
 
