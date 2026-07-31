@@ -66,7 +66,7 @@ def nieuw():
             float(request.form["bedrag"] or 0)
         )
 
-        return redirect(url_for("index"))
+        return redirect("./")
 
     return render_template("nieuw.html")
 
@@ -76,7 +76,7 @@ def verwijderen(id):
 
     database.verwijderen(id)
 
-    return redirect(url_for("index"))
+    return redirect("./")
 
 @app.route("/bewerken/<int:id>", methods=["GET","POST"])
 def bewerken(id):
@@ -96,7 +96,7 @@ def bewerken(id):
             float(request.form["bedrag"] or 0)
         )
 
-        return redirect(url_for("index"))
+        return redirect("./")
 
     return render_template(
         "nieuw.html",
