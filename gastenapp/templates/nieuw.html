@@ -16,8 +16,9 @@
 
 
 <label>Boeker</label>
-<input name="boeker" required>
-
+<input name="boeker"
+value="{{ boeking.boeker if boeking else '' }}"
+required>
 
 <label>Gast 1</label>
 <input name="gast1">
