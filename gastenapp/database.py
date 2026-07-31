@@ -3,6 +3,7 @@ from datetime import datetime
 
 DB = "/data/gasten.db"
 
+
 def init_db():
     conn = sqlite3.connect(DB)
     c = conn.cursor()
@@ -10,14 +11,13 @@ def init_db():
     c.execute("""
     CREATE TABLE IF NOT EXISTS boekingen (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        naam TEXT NOT NULL,
+        boeker TEXT NOT NULL,
+        gast1 TEXT,
+        gast2 TEXT,
         personen INTEGER NOT NULL,
         aankomst TEXT NOT NULL,
         vertrek TEXT NOT NULL,
-        nachten INTEGER NOT NULL,
         bedrag REAL,
-        status TEXT,
-        toeristenbelasting REAL,
         aangemaakt TEXT
     )
     """)
@@ -38,34 +38,43 @@ def alle_boekingen():
 
     data = c.fetchall()
     conn.close()
+
     return data
 
 
-def opslaan(naam, personen, aankomst, vertrek, bedrag, status):
-    start = datetime.strptime(aankomst, "%Y-%m-%d")
-    einde = datetime.strptime(vertrek, "%Y-%m-%d")
-
-    nachten = (einde - start).days
-    belasting = personen * nachten * 5
+def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
 
     conn = sqlite3.connect(DB)
     c = conn.cursor()
 
     c.execute("""
     INSERT INTO boekingen
-    VALUES (NULL,?,?,?,?,?,?,?,?,?)
+    VALUES (NULL,?,?,?,?,?,?,?,?)
     """,
     (
-        naam,
+        boeker,
+        gast1,
+        gast2,
         personen,
         aankomst,
         vertrek,
-        nachten,
         bedrag,
-        status,
-        belasting,
         datetime.now().isoformat()
     ))
+
+    conn.commit()
+    conn.close()
+
+
+def verwijderen(id):
+
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+
+    c.execute(
+        "DELETE FROM boekingen WHERE id=?",
+        (id,)
+    )
 
     conn.commit()
     conn.close()
