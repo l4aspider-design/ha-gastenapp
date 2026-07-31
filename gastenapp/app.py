@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import database
 
 app = Flask(__name__)
@@ -67,8 +67,7 @@ def nieuw():
             float(request.form["bedrag"] or 0)
         )
 
-        return redirect("./")
-
+    return redirect(url_for("index"))
     return render_template("nieuw.html")
 
 
