@@ -2,52 +2,65 @@
 <html>
 <head>
     <title>Nieuwe boeking</title>
+    <link rel="stylesheet" href="./static/style.css">
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>Nieuwe boeking</h1>
+
 
 <form method="post">
 
-Naam:
-<input name="naam"><br><br>
 
-Personen:
+<label>Boeker</label>
+<input name="boeker" required>
+
+
+<label>Gast 1</label>
+<input name="gast1">
+
+
+<label>Gast 2</label>
+<input name="gast2">
+
+
+<label>Aantal personen</label>
+
 <select name="personen">
 <option value="1">1</option>
 <option value="2">2</option>
 </select>
 
-<br><br>
 
-Aankomst:
-<input type="date" name="aankomst">
+<label>Aankomst</label>
 
-<br><br>
+<input type="date" name="aankomst" required>
 
-Vertrek:
-<input type="date" name="vertrek">
 
-<br><br>
+<label>Vertrek</label>
 
-Bedrag:
-<input name="bedrag">
+<input type="date" name="vertrek" required>
 
-<br><br>
 
-Status:
-<select name="status">
-<option>Bevestigd</option>
-<option>Betaald</option>
-<option>Geannuleerd</option>
-</select>
+<label>Bedrag ontvangen</label>
+
+<input name="bedrag" type="number" step="0.01">
+
 
 <br><br>
 
-<button type="submit">Opslaan</button>
+<button type="submit">
+Opslaan
+</button>
+
 
 </form>
 
+</div>
+
 </body>
+
 </html>
