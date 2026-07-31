@@ -1,14 +1,20 @@
 name: "Gastenapp"
-version: "0.1.0"
+version: "0.1.1"
 slug: "gastenapp"
 description: "Gastenadministratie met toeristenbelasting"
 arch:
   - amd64
+
 startup: application
 boot: auto
+
+init: false
+
 ingress: true
 ingress_port: 8099
+
 panel_icon: mdi:bed
 panel_title: Gastenapp
+
 ports:
   8099/tcp: null
