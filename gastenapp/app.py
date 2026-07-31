@@ -79,6 +79,31 @@ def verwijderen(id):
 
     return redirect("./")
 
+@app.route("/bewerken/<int:id>", methods=["GET","POST"])
+def bewerken(id):
+
+    boeking = database.ophalen(id)
+
+    if request.method == "POST":
+
+        database.aanpassen(
+            id,
+            request.form["boeker"],
+            request.form["gast1"],
+            request.form["gast2"],
+            int(request.form["personen"]),
+            request.form["aankomst"],
+            request.form["vertrek"],
+            float(request.form["bedrag"] or 0)
+        )
+
+        return redirect("./")
+
+    return render_template(
+        "nieuw.html",
+        boeking=boeking
+    )
+
 
 if __name__ == "__main__":
 
