@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:latest
+ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 RUN apk add --no-cache python3 py3-pip
@@ -10,11 +10,7 @@ RUN pip3 install \
     --break-system-packages \
     -r /tmp/requirements.txt
 
-WORKDIR /app
-
 COPY app.py /app/app.py
-COPY run.sh /app/run.sh
+COPY run.sh /etc/services.d/gastenapp/run
 
-RUN chmod +x /app/run.sh
-
-CMD ["/app/run.sh"]
+RUN chmod a+x /etc/services.d/gastenapp/run
