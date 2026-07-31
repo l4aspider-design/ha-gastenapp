@@ -75,6 +75,60 @@ def verwijderen(id):
         "DELETE FROM boekingen WHERE id=?",
         (id,)
     )
+   
+    conn.commit()
+    conn.close()
+
+
+def ophalen(id):
+
+    conn = sqlite3.connect(DB)
+    conn.row_factory = sqlite3.Row
+
+    c = conn.cursor()
+
+    c.execute(
+        "SELECT * FROM boekingen WHERE id=?",
+        (id,)
+    )
+
+    data = c.fetchone()
+
+    conn.close()
+
+    return data
+
+
+
+def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
+
+    conn = sqlite3.connect(DB)
+
+    c = conn.cursor()
+
+    c.execute("""
+    UPDATE boekingen
+    SET boeker=?,
+        gast1=?,
+        gast2=?,
+        personen=?,
+        aankomst=?,
+        vertrek=?,
+        bedrag=?
+    WHERE id=?
+    """,
+    (
+        boeker,
+        gast1,
+        gast2,
+        personen,
+        aankomst,
+        vertrek,
+        bedrag,
+        id
+    ))
 
     conn.commit()
     conn.close()
+
+
