@@ -6,6 +6,17 @@ app = Flask(__name__)
 database.init_db()
 
 
+import os
+
+print("=== DATABASE INFO ===")
+print("Bestaat:", os.path.exists("/data/gasten.db"))
+
+if os.path.exists("/data/gasten.db"):
+    print("Grootte:", os.path.getsize("/data/gasten.db"), "bytes")
+
+print("Aantal boekingen:", len(database.alle_boekingen()))
+print("=====================")
+
 def bereken_belasting(boekingen):
     resultaat = []
 
