@@ -55,7 +55,7 @@ def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, nachtprijs):
 
     c.execute("""
     INSERT INTO boekingen
-    VALUES (NULL,?,?,?,?,?,?,?,?)
+    VALUES (NULL,?,?,?,?,?,?,?,?,?)
     """,
     (
         boeker,
@@ -71,7 +71,6 @@ def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, nachtprijs):
 
     conn.commit()
     conn.close()
-
 
 def verwijderen(id):
 
