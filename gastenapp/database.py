@@ -139,3 +139,11 @@ def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
     conn.close()
 
 
+def alles_verwijderen():
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+
+    c.execute("DELETE FROM boekingen")
+
+    conn.commit()
+    conn.close()
