@@ -18,13 +18,19 @@ def init_db():
         aankomst TEXT NOT NULL,
         vertrek TEXT NOT NULL,
         bedrag REAL,
+        nachtprijs REAL,
         aangemaakt TEXT
     )
     """)
 
+    # Bestaande databases uitbreiden met nachtprijs
+    try:
+        c.execute("ALTER TABLE boekingen ADD COLUMN nachtprijs REAL")
+    except sqlite3.OperationalError:
+        pass
+
     conn.commit()
     conn.close()
-
 
 def alle_boekingen():
     conn = sqlite3.connect(DB)
