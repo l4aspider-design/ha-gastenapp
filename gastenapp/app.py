@@ -54,11 +54,6 @@ def bereken_belasting(boekingen):
 
 @app.route("/")
 def index():
-
-@app.route("/reset")
-def reset():
-    database.alles_verwijderen()
-    return redirect("/")
     
     boekingen = database.alle_boekingen()
 
