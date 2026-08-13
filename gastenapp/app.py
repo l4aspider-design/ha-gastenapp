@@ -76,7 +76,7 @@ def nieuw():
             personen,
             request.form["aankomst"],
             request.form["vertrek"],
-            float(request.form["bedrag"] or 0),
+            #float(request.form["bedrag"] or 0),
             float(request.form["nachtprijs"] or 0)
         )
 
