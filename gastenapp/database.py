@@ -48,14 +48,14 @@ def alle_boekingen():
     return data
 
 
-def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, bedrag, nachtprijs):
+def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, nachtprijs):
 
     conn = sqlite3.connect(DB)
     c = conn.cursor()
 
     c.execute("""
     INSERT INTO boekingen
-    VALUES (NULL,?,?,?,?,?,?,?,?,?)
+    VALUES (NULL,?,?,?,?,?,?,?,?)
     """,
     (
         boeker,
@@ -64,7 +64,7 @@ def opslaan(boeker, gast1, gast2, personen, aankomst, vertrek, bedrag, nachtprij
         personen,
         aankomst,
         vertrek,
-        bedrag,
+        0,
         nachtprijs,
         datetime.now().isoformat()
     ))
