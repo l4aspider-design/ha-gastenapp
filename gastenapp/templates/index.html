@@ -23,11 +23,12 @@
     <th>Gasten</th>
     <th>Periode</th>
     <th>Nachten</th>
+    <th>Nachtprijs</th>
     <th>Overnachting</th>
     <th>Belasting</th>
+    <th>Totaal</th>
     <th></th>
 </tr>
-
 
 {% for b in boekingen %}
 
@@ -57,6 +58,10 @@ t/m
 </td>
 
 <td>
+€ {{ "%.2f"|format(b.nachtprijs) }}
+</td>
+
+<td>
 € {{ "%.2f"|format(b.overnachting) }}
 </td>
 
@@ -65,7 +70,9 @@ t/m
 </td>
 
 <td>
-
+€ {{ "%.2f"|format(b.overnachting + b.belasting) }}
+</td>
+    
 <a href="./bewerken/{{ b.id }}">    ✏️
 </a>
 
