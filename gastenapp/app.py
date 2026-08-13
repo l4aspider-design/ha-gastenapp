@@ -30,7 +30,9 @@ def bereken_belasting(boekingen):
         einde = datetime.strptime(vertrek, "%Y-%m-%d")
 
         nachten = (einde - start).days
-        overnachting = nachten * (b["nachtprijs"] or 0)
+        nachtprijs = float(b["nachtprijs"] or 0)
+        overnachting = nachten * nachtprijs
+        
         belasting = b["personen"] * nachten * 5
 
         resultaat.append({
@@ -42,7 +44,7 @@ def bereken_belasting(boekingen):
             "aankomst": b["aankomst"],
             "vertrek": b["vertrek"],
             "nachten": nachten,
-            "nachtprijs": b["nachtprijs"],
+            "nachtprijs": nachtprijs,
             "overnachting": overnachting,
             "belasting": belasting
         })
