@@ -107,7 +107,7 @@ def ophalen(id):
 
 
 
-def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
+def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, nachtprijs):
 
     conn = sqlite3.connect(DB)
 
@@ -121,7 +121,7 @@ def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
         personen=?,
         aankomst=?,
         vertrek=?,
-        bedrag=?
+        nachtprijs=?
     WHERE id=?
     """,
     (
@@ -131,7 +131,7 @@ def aanpassen(id, boeker, gast1, gast2, personen, aankomst, vertrek, bedrag):
         personen,
         aankomst,
         vertrek,
-        bedrag,
+        nachtprijs,
         id
     ))
 
